@@ -23,7 +23,5 @@ urlpatterns = [
     path('', include('home.urls')),
     path('blog/', include('blog.urls'))
 ]
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 #handler404='home.views.error'
 handler500='home.views.error'
