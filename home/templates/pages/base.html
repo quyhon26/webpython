@@ -5,14 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>{% block title %}{% endblock %}</title>
     <style>
         html,
         body {
             height: 100%;
             background-color: #CCCCCC;
             font-family: "Comic Sans MS", cursive, sans-serif;
+        }
+        
+        .bgimg {
+            background-image: url('https://www.w3schools.com//w3images/forestbridge.jpg');
+            min-height: 100%;
+            background-position: center;
+            background-size: cover;
         }
         
         .img1 {
@@ -35,44 +46,54 @@
 </head>
 
 <body>
-    <div class="container-fluid" style="min-height: 95%">
-        <center>
-            <div class="img1">
-                <br/>
-                <img src="https://i.imgur.com/viKvpnS.png" class="img2" />
-                <br/>
-                <br/>
-            </div>
-        </center>
-        <div class="row">
-            <div class="col-sm-10">
-                <div class="bs-sliderbar">
-                    <h3>
-                        <p><a href="/">Thông Tin Cá Nhân</a> | <a href="{% url 'blog' %}">Blog</a> | <a href="{% url 'contact' %}">Liên Hệ</a></p>
-                    </h3>
+    <div class="w3-top" style="background-color:#00bfbf ">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-10">
+                    <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
+                        <a href="{% url 'blog' %}" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Home</a>
+                        <a href="/" class="w3-bar-item w3-button w3-padding-large">Infor</a>
+                        <a href="{% url 'contact' %}" class="w3-bar-item w3-button w3-padding-large">Contact</a>
+                    </div>
+                </div>
+                <div class="col-sm-2" style="margin-top: 11px;">
+                    <center>
+                        {% if user.username %}
+                        <h5>
+                            <p>{{user.username}} | <a href="{% url 'logout' %}">Logout</a></p>
+                        </h5>
+                        {% else %}
+                        <h5>
+                            <p><a href="{% url 'register' %}">Register</a> | <a href="{% url 'login' %}">Login</a></p>
+                        </h5>
+                        {% endif %}
+                    </center>
                 </div>
             </div>
-            <div class="col-sm-2">
-                {% if user.username %}
-                <h5>
-                    <p>Hello {{user.username}} | <a href="{% url 'logout' %}">Logout</a></p>
-                </h5>
-                {% else %}
-                <h5>
-                    <p><a href="{% url 'register' %}">Register</a> | <a href="{% url 'login' %}">Login</a></p>
-                </h5>
-                {% endif %}
-            </div>
         </div>
+    </div>
+    <div class="bgimg w3-display-container w3-animate-opacity w3-text-white" style="margin-top: 3%">
+        <div class="w3-display-topleft w3-padding-large w3-xlarge">
+            <h1 class="w3-jumbo w3-animate-top" style="font-family: Comic Sans MS; margin-top: 40%;">My Life</h1>
+        </div>
+        <div class="w3-display-middle">
+            <h1 class="w3-jumbo w3-animate-top" style="font-family: Comic Sans MS">Wind</h1>
+            <hr class="w3-border-grey" style="margin:auto;width:40%">
+            <br/>
+            <p class="w3-large w3-center">breath of all things</p>
+        </div>
+    </div>
+
+    <div class="container-fluid" style="min-height: 95%">
+        <br/>
         <div class="container-fluid " style="font-size: 22px; text-align: justify;">
             {% block content %} {% endblock %}
         </div>
     </div>
-    <footer>
-        <div class="container-fluid">
-            <a href="https://www.facebook.com/A.Tuan23" target="_blank">Facebook</a>|<a href="">Twitter</a>|<a href="">Goodle+</a>
-        </div>
-    </footer>
+    <center>
+        <a href="#" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+    </center>
+    <div class="w3-black w3-center w3-padding-24">Powered by <a href="https://www.facebook.com/A.tuan23" title="W3.CSS" target="_blank" class="w3-hover-opacity">A.Tuấn</a></div>
 </body>
 
 </html>
